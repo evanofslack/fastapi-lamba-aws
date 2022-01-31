@@ -20,8 +20,9 @@ async def redis_check():
             decode_responses=True,
             ssl=False,
         )
-        redis.ping()
-        return {"Message": "Connected to Redis"}
+        redis.set("test", "hello from redis")
+        value = redis.get("test")
+        return {"Message": value}
     except Exception as e:
         return {"Message": e}
 

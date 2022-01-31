@@ -1,6 +1,6 @@
 functions:
   myAwesomeFastAPIFunction:
-    image: 363472115858.dkr.ecr.us-east-1.amazonaws.com/lambda-fastapi@sha256:f78e5e65db3a2adb400f1144a42283c107619f613be7082ab468a3771448b818
+    image: 363472115858.dkr.ecr.us-east-1.amazonaws.com/lambda-fastapi@sha256:598556b5a03f2ffa99532859d228fecab9dd72825d985a3b70d39ab7780d5932
     events:
       - http:
           path: ping/
