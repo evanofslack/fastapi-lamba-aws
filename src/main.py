@@ -10,20 +10,20 @@ app = FastAPI(
     version="0.1.0",
 )
 
-redis = Redis(
-    host="test-redis.kthrlr.ng.0001.use1.cache.amazonaws.com",
-    port=6379,
-    decode_responses=True,
-    ssl=True,
-)
-
 
 @app.get("/redis", name="Redis", tags=["Redis"])
 async def redis_check():
-    if redis.ping():
+    try:
+        redis = Redis(
+            host="redis-test-2.kthrlr.ng.0001.use1.cache.amazonaws.com",
+            port=6379,
+            decode_responses=True,
+            ssl=False,
+        )
+        redis.ping()
         return {"Message": "Connected to Redis"}
-    else:
-        return {"Message": "Could not connect to Redis"}
+    except Exception as e:
+        return {"Message": e}
 
 
 @app.get("/ping", name="Healthcheck", tags=["Healthcheck"])
